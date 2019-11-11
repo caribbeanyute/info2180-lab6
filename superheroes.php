@@ -4,7 +4,7 @@ $superheroes = [
   [
       "id" => 1,
       "name" => "Steve Rogers",
-      "alias" => "Captain America",
+      "alias" => "Captain Ameria",
       "biography" => "Recipient of the Super-Soldier serum, World War II hero Steve Rogers fights for American ideals as one of the world’s mightiest heroes and the leader of the Avengers.",
   ],
   [
@@ -63,10 +63,27 @@ $superheroes = [
   ], 
 ];
 
-?>
+function allHeros($arr){
+	$list = "<ul>\n";
+	foreach ($arr as $superhero){
+		$list.="<li>{$superhero['alias']}</li>\n";
+	}
+		$list.="<ul>\n";
+		return $list;
+	
+}
 
-<ul>
-<?php foreach ($superheroes as $superhero): ?>
-  <li><?= $superhero['alias']; ?></li>
-<?php endforeach; ?>
-</ul>
+function searchForId($id, $array) {
+	if ($id === null){
+		return allHeros($array);
+	}
+   foreach ($array as $key => $val) {
+       if ($val['name'] === $id or $val['alias'] == $id ) {
+           return json_encode($array[$key]);
+       }
+   }
+   return "Superhero not found";
+}
+echo searchForId(filter_input(INPUT_GET, 'query', FILTER_SANITIZE_URL),$superheroes);
+
+?>
