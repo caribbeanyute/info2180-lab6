@@ -2,9 +2,11 @@ window.onload = function() {
     var anchors = document.getElementsByClassName("searchButton");
     for(var i = 0; i < anchors.length; i++) {
         var anchor = anchors[i];
-        url = "http://34.82.184.97:56869/superheroes.php";
+        url = "/superheroes.php";
         anchor.onclick = function() {
-            fetch(url)
+            var route = (document.getElementById('textbox_id').value == "") ? url : url+"?query="+document.getElementById('textbox_id').value;
+            console.log(route);
+            fetch(route)
             .then(response => response.text())
             .then(data => {
                 setDiv(data) // Prints result from `response.json()` in getRequest
@@ -17,7 +19,7 @@ window.onload = function() {
 
 
 function setDiv(p1) {
-	var result = document.getElementById("container2");
+	var result = document.getElementById("result");
 	result.innerHTML = p1;
   
 }

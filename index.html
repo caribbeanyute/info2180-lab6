@@ -1,16 +1,28 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<title>Avengers Character Search</title>
-<script src="app.js"></script>
-<link rel="stylesheet" href="style.css">
+    <title>Avengers Character Search</title>
+    <script src="app.js"></script>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-	<div id="container1">Avengers Character Search</div>
-		<div id="container2">
-			</div>
-    <button type="submit" class="searchButton">
-        <i class="fa fa-search">Search</i>
-     </button>
+    <div class="header">
+        <h1>Avengers Character Search</h1>
+    </div>
+    Search by Full Name or Alias
+    <div class="search">
+        <input type="submit" class="searchButton" value="Search"  />
+        <div style="overflow: hidden; padding-right: .5em;">
+            <input type="text" class="adiemus" id="textbox_id" style="width: 100%;" />
+        </div>
+    </div>
+    <div>
+        <h1>RESULT</h1>
+        <br>
+        <div id="result">
+        </div>
 </body>
+
 </html>

@@ -73,13 +73,23 @@ function allHeros($arr){
 	
 }
 
+function style($hero){
+  $list = "<h3>{$hero['alias']}</h3>\n";
+  $list.= "<h4>{$hero['name']}</h4>\n";
+  $list.= "<p>{$hero['biography']}</p>\n";
+  return $list;
+  
+}
+
+
+
 function searchForId($id, $array) {
 	if ($id === null){
 		return allHeros($array);
 	}
    foreach ($array as $key => $val) {
        if ($val['name'] === $id or $val['alias'] == $id ) {
-           return json_encode($array[$key]);
+           return style($array[$key]);
        }
    }
    return "Superhero not found";
